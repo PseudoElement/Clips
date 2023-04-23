@@ -1,7 +1,23 @@
+<ng-template #dynamicComponent let-content>
+     <div [innerHTML]="content"></div>
+</ng-template>
+
+<button (click)="blueClass = !blueClass">Change</button>
+
+<p *ngIf="blueClass">Button is blue.</p>
+
+<div [ngClass]="{ blue: blueClass }" [ngStyle]="{ 'font-size.px': fontSize }">{{ blueClass ? "Blue" : "Not blue" }}</div>
+
+<hr />
+
 <input (input)="changeImage($event)" [value]="imgURL" type="text" />
 <p>{{ name }}</p>
 <p>{{ 10 + 20 }}</p>
-<app-post (imgSelected)="logImg($event)" [img]="imgURL">
-     <p footer>Some caption 11</p>
-     <p header>Some caption 22</p>
+<app-post *ngFor="let image of images; let i = index" (imgSelected)="logImg($event)" [img]="image">
+     <p header>Some caption 11</p>
+     <p footer>Some caption 22</p>
 </app-post>
+<p>{{ currentDate | date : "shortTime" }}</p>
+<p>{{ cost | currency : "HUF" }}</p>
+<p>{{ temperature | number : "1.10" }}</p>
+<p>{{ pizza | json }}</p>
