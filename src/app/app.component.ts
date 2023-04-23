@@ -15,4 +15,7 @@ export class AppComponent {
      changeImage(e: Event) {
           this.imgURL = (e.target as HTMLInputElement).value;
      }
+     logImg(e: string) {
+          console.log(e);
+     }
 }
