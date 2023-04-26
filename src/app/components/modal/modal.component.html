@@ -1,4 +1,4 @@
-<div class="fixed z-50 inset-0 overflow-y-auto" id="modal">
+<div (click)="closeModal()" class="fixed z-50 inset-0 overflow-y-auto" id="modal" [ngClass]="{ hidden: !isOpenModal() }">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <!-- Modal BG Overlay -->
         <div class="fixed inset-0 transition-opacity">
@@ -9,6 +9,7 @@
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
 
         <div
+            (click)="onModalClick($event)"
             class="inline-block align-bottom bg-secondary rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
         >
             <!-- Add margin if you want to see some of the overlay behind the modal-->
@@ -18,7 +19,7 @@
                     <ng-content select="[heading]"></ng-content>
 
                     <!-- Modal Close Button -->
-                    <div class="modal-close cursor-pointer z-50">&#x2715;</div>
+                    <div (click)="closeModal()" class="modal-close cursor-pointer z-50">&#x2715;</div>
                 </div>
                 <ng-content></ng-content>
             </div>
