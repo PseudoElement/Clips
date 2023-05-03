@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { AuthModalService } from "src/app/services/auth-modal.service";
 import { ModalTypes } from "src/app/shared/enums";
 
@@ -7,10 +7,13 @@ import { ModalTypes } from "src/app/shared/enums";
     templateUrl: "./auth-modal.component.html",
     styleUrls: ["./auth-modal.component.scss"],
 })
-export class AuthModalComponent implements OnInit {
+export class AuthModalComponent implements OnInit, OnDestroy {
     constructor(public modalService: AuthModalService) {}
     ngOnInit(): void {
         this.modalService.register(ModalTypes.AUTH);
+    }
+    ngOnDestroy(): void {
+        this.modalService.unregister(ModalTypes.AUTH);
     }
     get ModalTypes(): typeof ModalTypes {
         return ModalTypes;

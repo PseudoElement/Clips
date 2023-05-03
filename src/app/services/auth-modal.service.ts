@@ -21,6 +21,9 @@ export class AuthModalService {
             modal.isVisible = !modal.isVisible;
         }
     }
+    unregister(id: string) {
+        this.modals = this.modals.filter((modal) => modal.id !== id);
+    }
     register(id: ModalTypes) {
         this.modals.push({ id, isVisible: false });
     }

@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ElementRef, OnInit } from "@angular/core";
 import { AuthModalService } from "src/app/services/auth-modal.service";
 import { ModalTypes } from "src/app/shared/enums";
 
@@ -7,11 +7,15 @@ import { ModalTypes } from "src/app/shared/enums";
     templateUrl: "./modal.component.html",
     styleUrls: ["./modal.component.scss"],
 })
-export class ModalComponent {
+export class ModalComponent implements OnInit {
     @Input() modalType: ModalTypes = ModalTypes.AUTH;
-    constructor(public modalService: AuthModalService) {}
+    constructor(public modalService: AuthModalService, public el: ElementRef) {}
     public onModalClick(e: Event) {
         e.stopPropagation();
+    }
+    ngOnInit(): void {
+        document.body.append(this.el.nativeElement);
+        this.el.nativeElement.className = "modalWrapper";
     }
     closeModal() {
         this.modalService.toggleModal(this.modalType);
