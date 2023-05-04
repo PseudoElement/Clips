@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, ValidatorFn, Validators } from "@angular/forms";
-import { FormRegisterNames } from "./model";
+import { FormRegisterNames, IAlert } from "./model";
 
 @Component({
     selector: "app-register-form",
@@ -16,13 +16,25 @@ export class RegisterFormComponent {
             Validators.required,
             Validators.minLength(5),
             Validators.maxLength(20),
-            Validators.pattern("^(?=.*[A-Za-z])(?=.*d).+$"),
+            Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d).+$"),
         ]),
         confirmPassword: new FormControl("", [Validators.required]),
         phone: new FormControl("", [Validators.required]),
     });
+    alert: IAlert = {
+        isVisible: false,
+        message: "Please wait! Your account is being created.",
+        color: "blue",
+    };
     constructor() {}
     onChange() {}
+    onSubmit() {
+        this.alert.isVisible = true;
+        this.alert.message = "Please wait! Your account is being created.";
+        this.alert.color = "blue";
+        console.log(this.registerForm.value);
+        this.registerForm.reset();
+    }
     getControl(name: FormRegisterNames) {
         return this.registerForm.get(name);
     }

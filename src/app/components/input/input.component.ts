@@ -25,6 +25,6 @@ export class InputComponent {
         }
     }
     onClick() {
-        console.log(this.control);
+        // console.log(this.control);
     }
 }

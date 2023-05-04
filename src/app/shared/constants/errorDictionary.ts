@@ -10,7 +10,7 @@ export interface IErrorDictionary {
 }
 
 export const errorDictionary: IErrorDictionary = {
-    pattern: "Password should be at least 3 and max 10 chars",
+    pattern: "Password should contain at least 1 letter and 1 digit",
     mask: "Incorrect phone format",
     required: "Field is required",
     minlength: "Too short",

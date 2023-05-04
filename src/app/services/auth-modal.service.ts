@@ -16,7 +16,6 @@ export class AuthModalService {
     }
     toggleModal(id: ModalTypes) {
         const modal = this.modals.find((modal) => modal.id === id);
-        console.log(modal);
         if (modal) {
             modal.isVisible = !modal.isVisible;
         }
