@@ -1,0 +1,11 @@
+<label class="inline-block mb-2">{{ label }}</label>
+<input
+    (click)="onClick()"
+    [formControl]="control"
+    [type]="type"
+    class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
+    [placeholder]="placeholder"
+    [mask]="format"
+    [dropSpecialCharacters]="false"
+/>
+<p class="text-red-400" *ngIf="isError()">{{ isError() | errorTransformer }}</p>
