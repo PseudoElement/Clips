@@ -15,4 +15,8 @@ export class NavComponent {
         e.preventDefault();
         this.modalService.toggleModal(ModalTypes.AUTH);
     }
+    public async onLogout(e: Event) {
+        e.preventDefault();
+        await this.auth.signOut();
+    }
 }

@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { AngularFireAuth } from "@angular/fire/compat/auth";
 import { IAlert } from "src/app/shared/types";
 import { AuthModalService } from "src/app/services/auth-modal.service";
 import { ModalTypes } from "src/app/shared/enums";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
     selector: "app-login-form",
@@ -21,7 +21,7 @@ export class LoginFormComponent {
         message: "",
         color: "blue",
     };
-    constructor(private auth: AngularFireAuth, private modal: AuthModalService) {}
+    constructor(private auth: AuthService, private modal: AuthModalService) {}
 
     async onSubmit(ngForm: NgForm) {
         if (ngForm.form.invalid) {
@@ -29,10 +29,11 @@ export class LoginFormComponent {
             return;
         }
         this.isLoading = true;
+        this.alert.color = "blue";
         this.alert.isVisible = true;
         this.alert.message = "Please wait! Your account is logging in.";
         try {
-            await this.auth.signInWithEmailAndPassword(this.credentials.email, this.credentials.password);
+            await this.auth.signIn(this.credentials.email, this.credentials.password);
         } catch (e: any) {
             this.alert.color = "red";
             this.alert.message = e.message;
@@ -44,10 +45,5 @@ export class LoginFormComponent {
         this.alert.color = "green";
         this.alert.message = "You've successfully logged in!";
         ngForm.reset();
-        setTimeout(() => {
-            this.alert.isVisible = false;
-            this.alert.color = "blue";
-            this.modal.toggleModal(ModalTypes.AUTH);
-        }, 3000);
     }
 }
