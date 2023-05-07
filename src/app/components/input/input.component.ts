@@ -18,7 +18,7 @@ export class InputComponent {
     constructor() {}
 
     isError(): ErrorDictionaryKey {
-        if (this.control?.dirty && this.control?.invalid) {
+        if (this.control?.dirty && this.control.touched && this.control?.invalid) {
             return Object.keys(this.control?.errors as {})[0] as ErrorDictionaryKey;
         } else {
             return "" as ErrorDictionaryKey;

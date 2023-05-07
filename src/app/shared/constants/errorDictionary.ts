@@ -5,6 +5,7 @@ export interface IErrorDictionary {
     email: string;
     min: string;
     passwordMismatch: string;
+    emailTaken: string;
     mask: string;
     pattern: string;
 }
@@ -18,6 +19,7 @@ export const errorDictionary: IErrorDictionary = {
     email: "Incorrect email format.",
     min: "Should be older then 18",
     passwordMismatch: "Passwords ain't match",
+    emailTaken: "Email is already taken.",
 };
 
 export type ErrorDictionaryKey = keyof typeof errorDictionary;

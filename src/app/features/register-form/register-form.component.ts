@@ -1,10 +1,12 @@
 import { Component } from "@angular/core";
-import { FormControl, FormGroup, ValidatorFn, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FormRegisterNames } from "./model";
 import { AuthModalService } from "src/app/services/auth-modal.service";
 import { ModalTypes } from "src/app/shared/enums";
 import { AuthService } from "src/app/services/auth.service";
 import { IAlert, UserRegisterData } from "src/app/shared/types";
+import { RegisterValidator } from "src/app/shared/classes/register-validator";
+import { EmailTaken } from "src/app/shared/classes/email-taken";
 
 @Component({
     selector: "app-register-form",
@@ -12,22 +14,25 @@ import { IAlert, UserRegisterData } from "src/app/shared/types";
     styleUrls: ["./register-form.component.scss"],
 })
 export class RegisterFormComponent {
-    constructor(private auth: AuthService, private modal: AuthModalService) {}
+    constructor(private auth: AuthService, private modal: AuthModalService, private emailTaken: EmailTaken) {}
 
     isLoading = false;
-    registerForm = new FormGroup({
-        name: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
-        email: new FormControl("", [Validators.required, Validators.email]),
-        age: new FormControl(0, [Validators.required, Validators.min(18)]),
-        password: new FormControl("", [
-            Validators.required,
-            Validators.minLength(5),
-            Validators.maxLength(20),
-            Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d).+$"),
-        ]),
-        confirmPassword: new FormControl("", [Validators.required]),
-        phone: new FormControl("", [Validators.required]),
-    });
+    registerForm = new FormGroup(
+        {
+            name: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+            email: new FormControl("", [Validators.required, Validators.email], [this.emailTaken.validate]),
+            age: new FormControl(0, [Validators.required, Validators.min(18)]),
+            password: new FormControl("", [
+                Validators.required,
+                Validators.minLength(5),
+                Validators.maxLength(20),
+                Validators.pattern("^(?=.*[a-zA-Z])(?=.*\\d).+$"),
+            ]),
+            confirmPassword: new FormControl("", [Validators.required]),
+            phone: new FormControl("", [Validators.required]),
+        },
+        [RegisterValidator.match("password", "confirmPassword")]
+    );
     alert: IAlert = {
         isVisible: false,
         message: "",
