@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { AuthModalService } from "src/app/services/auth-modal.service";
+import { AuthService } from "src/app/services/auth.service";
 import { ModalTypes } from "src/app/shared/enums";
 
 @Component({
@@ -8,7 +9,7 @@ import { ModalTypes } from "src/app/shared/enums";
     styleUrls: ["./nav.component.scss"],
 })
 export class NavComponent {
-    constructor(public modalService: AuthModalService) {}
+    constructor(public modalService: AuthModalService, public auth: AuthService) {}
 
     public openModal(e: Event) {
         e.preventDefault();

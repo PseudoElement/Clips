@@ -17,6 +17,7 @@ export class TabsContainerComponent implements AfterContentInit {
         }
     }
     setActiveTab(tab: TabComponent) {
+        // console.log(this.tabs);
         this.tabs.forEach((tab) => (tab.isActive = false));
         tab.isActive = true;
         return false;
