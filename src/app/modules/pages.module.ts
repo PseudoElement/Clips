@@ -9,10 +9,11 @@ import { ManageComponent } from "../pages/manage/manage.component";
 import { UploadComponent } from "../pages/upload/upload.component";
 import { RouterModule } from "@angular/router";
 import { ClipComponent } from "../pages/clip/clip.component";
+import { NotFoundComponent } from '../pages/not-found/not-found.component';
 
 @NgModule({
-    declarations: [SandboxComponent, HomeComponent, AboutComponent, ManageComponent, UploadComponent, ClipComponent],
+    declarations: [SandboxComponent, HomeComponent, AboutComponent, ManageComponent, UploadComponent, ClipComponent, NotFoundComponent],
     imports: [CommonModule, ComponentsModule, FeaturesModule, RouterModule],
-    exports: [HomeComponent, AboutComponent, ManageComponent, UploadComponent, ClipComponent],
+    exports: [HomeComponent, AboutComponent, ManageComponent, UploadComponent, ClipComponent, NotFoundComponent],
 })
 export class PagesModule {}

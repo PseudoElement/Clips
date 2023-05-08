@@ -1,17 +1,17 @@
-import { FormGroup } from "@angular/forms";
+import { AbstractControl, FormGroup, ValidatorFn } from "@angular/forms";
 import { FormRegisterNames } from "src/app/features/register-form/model";
 
-export function isPasswordsMatch(controlName: FormRegisterNames, matchingControlName: FormRegisterNames) {
-    return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
-        if (matchingControl.errors && !matchingControl.errors.confirmedValidator) {
-            return;
+export function isPasswordsMatch(controlName: FormRegisterNames, matchingControlName: FormRegisterNames): ValidatorFn {
+    return (formGroup: AbstractControl) => {
+        const control = formGroup.get(controlName);
+        const matchingControl = formGroup.get(matchingControlName);
+        if (!control || !matchingControl) {
+            console.error("Form control can not be found.");
+            return { controlNotFound: false };
         }
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ confirmedValidator: true });
-        } else {
-            matchingControl.setErrors(null);
-        }
+        const error = control.value === matchingControl.value ? null : { passwordMismatch: true };
+
+        matchingControl.setErrors(error);
+        return error;
     };
 }
