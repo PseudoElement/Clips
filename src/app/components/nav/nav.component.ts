@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { AuthModalService } from "src/app/services/auth-modal.service";
 import { AuthService } from "src/app/services/auth.service";
 import { ModalTypes } from "src/app/shared/enums";

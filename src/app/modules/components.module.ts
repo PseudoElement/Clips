@@ -11,10 +11,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
 import { AlertComponent } from "../components/alert/alert.component";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
     declarations: [TestComponent, PostComponent, NavComponent, ModalComponent, TabsContainerComponent, TabComponent, InputComponent, AlertComponent],
-    imports: [CommonModule, ReactiveFormsModule, FormsModule, SharedModule, NgxMaskDirective, NgxMaskPipe],
+    imports: [CommonModule, ReactiveFormsModule, FormsModule, SharedModule, NgxMaskDirective, NgxMaskPipe, RouterModule],
     exports: [TestComponent, PostComponent, NavComponent, ModalComponent, TabsContainerComponent, TabComponent, InputComponent, AlertComponent],
     providers: [provideNgxMask()],
 })
