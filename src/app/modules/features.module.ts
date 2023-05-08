@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { VideosComponent } from "../features/videos/videos.component";
+import { DirectivesModule } from "./directives.module";
 
 @NgModule({
     declarations: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent],
