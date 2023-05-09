@@ -10,8 +10,8 @@ import { FeaturesModule } from "./modules/features.module";
 import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from "src/environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireStorageModule } from "@angular/fire/compat/storage";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
-
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -24,6 +24,7 @@ import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
         AngularFirestoreModule,
+        AngularFireStorageModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

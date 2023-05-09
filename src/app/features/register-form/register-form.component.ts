@@ -7,6 +7,7 @@ import { AuthService } from "src/app/services/auth.service";
 import { IAlert, UserRegisterData } from "src/app/shared/types";
 import { RegisterValidator } from "src/app/shared/classes/register-validator";
 import { EmailTaken } from "src/app/shared/classes/email-taken";
+import { isPasswordsMatch } from "src/app/shared/helpers";
 
 @Component({
     selector: "app-register-form",
@@ -31,7 +32,7 @@ export class RegisterFormComponent {
             confirmPassword: new FormControl("", [Validators.required]),
             phone: new FormControl("", [Validators.required]),
         },
-        [RegisterValidator.match("password", "confirmPassword")]
+        [isPasswordsMatch("password", "confirmPassword")]
     );
     alert: IAlert = {
         isVisible: false,

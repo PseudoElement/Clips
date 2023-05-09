@@ -11,10 +11,11 @@ import { RouterModule } from "@angular/router";
 import { ClipComponent } from "../pages/clip/clip.component";
 import { NotFoundComponent } from "../pages/not-found/not-found.component";
 import { SharedModule } from "../shared/shared.module";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [SandboxComponent, HomeComponent, AboutComponent, ManageComponent, UploadComponent, ClipComponent, NotFoundComponent],
-    imports: [CommonModule, ComponentsModule, FeaturesModule, RouterModule, SharedModule],
+    imports: [CommonModule, ComponentsModule, FeaturesModule, RouterModule, SharedModule, ReactiveFormsModule],
     exports: [HomeComponent, AboutComponent, ManageComponent, UploadComponent, ClipComponent, NotFoundComponent],
 })
 export class PagesModule {}
