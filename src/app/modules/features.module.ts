@@ -8,10 +8,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { VideosComponent } from "../features/videos/videos.component";
+import { EditModalComponent } from '../features/edit-modal/edit-modal.component';
 
 @NgModule({
-    declarations: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent],
+    declarations: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent],
     imports: [CommonModule, ComponentsModule, ReactiveFormsModule, FormsModule, SharedModule, RouterModule],
-    exports: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent],
+    exports: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent],
 })
 export class FeaturesModule {}
