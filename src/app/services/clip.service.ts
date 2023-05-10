@@ -14,6 +14,7 @@ export class ClipService {
         this.clipsCollection = this.db.collection("clips");
     }
     createClip(data: IClip): Promise<DocumentReference<IClip>> {
+        console.log("DATA", data);
         return this.clipsCollection.add(data);
     }
     getUserClips(sort$: BehaviorSubject<string>) {
@@ -39,7 +40,9 @@ export class ClipService {
     }
     async deleteClip(clip: IClip) {
         const clipRef = this.storage.ref(`clips/${clip.fileName}`);
+        const screenshotRef = this.storage.ref(`screenshots/${clip.screenshotFileName}`);
         await clipRef.delete();
+        await screenshotRef.delete();
         await this.clipsCollection.doc(clip.id).delete();
     }
 }
