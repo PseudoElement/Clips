@@ -9,10 +9,11 @@ import { SharedModule } from "../shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { VideosComponent } from "../features/videos/videos.component";
 import { EditModalComponent } from '../features/edit-modal/edit-modal.component';
+import { ClipListComponent } from '../features/clip-list/clip-list.component';
 
 @NgModule({
-    declarations: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent],
+    declarations: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent, ClipListComponent],
     imports: [CommonModule, ComponentsModule, ReactiveFormsModule, FormsModule, SharedModule, RouterModule],
-    exports: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent],
+    exports: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent, ClipListComponent],
 })
 export class FeaturesModule {}

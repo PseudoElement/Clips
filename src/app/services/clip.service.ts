@@ -10,6 +10,9 @@ import { AngularFireStorage } from "@angular/fire/compat/storage";
 })
 export class ClipService {
     public clipsCollection: AngularFirestoreCollection<IClip>;
+    pageClips: IClip[] = [];
+    isPendingReq = false;
+
     constructor(private db: AngularFirestore, private auth: AngularFireAuth, private storage: AngularFireStorage) {
         this.clipsCollection = this.db.collection("clips");
     }
@@ -21,7 +24,6 @@ export class ClipService {
         return combineLatest([this.auth.user, sort$]).pipe(
             switchMap((values) => {
                 const [user, sort] = values;
-
                 if (!user) {
                     return of([]);
                 }
@@ -44,5 +46,28 @@ export class ClipService {
         await clipRef.delete();
         await screenshotRef.delete();
         await this.clipsCollection.doc(clip.id).delete();
+    }
+
+    async getClips() {
+        if (this.isPendingReq) return;
+        this.isPendingReq = true;
+        //get latest 6 clips
+        let query = this.clipsCollection.ref.orderBy("timestamp", "desc").limit(6);
+
+        if (this.pageClips.length) {
+            const lastDocID = this.pageClips[this.pageClips.length - 1].id;
+            const lastDoc = await this.clipsCollection.doc(lastDocID).get().toPromise();
+            query = query.startAfter(lastDoc);
+        }
+
+        const snapshot = await query.get();
+
+        snapshot.forEach((doc) => {
+            this.pageClips.push({
+                id: doc.id,
+                ...doc.data(),
+            });
+        });
+        this.isPendingReq = false;
     }
 }
