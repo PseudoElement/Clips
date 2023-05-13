@@ -1,4 +1,7 @@
 {
+    "about": {
+        "text1": "Soon..."
+    },
     "sandbox": {
         "btnText": "Change",
         "p1": "Button is blue.",
@@ -8,6 +11,33 @@
         },
         "p2": "Some caption 11",
         "p3": "Some caption 22",
-        "p4": "{{name}}"
+        "p4": "{{name}}",
+        "name": "Luis"
+    },
+    "nav": {
+        "about": "About",
+        "loginRegister": "Login / Register",
+        "manage": "Manage",
+        "upload": "Upload",
+        "logout": "Logout"
+    },
+    "upload": {
+        "text1": "Upload video",
+        "text2": "Drop your file here (mp4 only!)",
+        "text3": "",
+        "text4": "Select a screenshot",
+        "inputTitle": "Title",
+        "inputPlaceholder": "Enter title",
+        "publish": "Publish"
+    },
+    "manage": {
+        "uploadBtn": "Upload videos",
+        "option1": "Recent uploads",
+        "option2": "Oldest uploads"
+    },
+    "alert": {
+        "loading": "Please wait! Your clip is being uploaded.",
+        "success": "Your file was successfully uploaded!",
+        "error": "Your clip wasn't uploaded! Some error occured."
     }
 }

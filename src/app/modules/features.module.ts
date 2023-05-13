@@ -8,12 +8,29 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SharedModule } from "../shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { VideosComponent } from "../features/videos/videos.component";
-import { EditModalComponent } from '../features/edit-modal/edit-modal.component';
-import { ClipListComponent } from '../features/clip-list/clip-list.component';
+import { EditModalComponent } from "../features/edit-modal/edit-modal.component";
+import { ClipListComponent } from "../features/clip-list/clip-list.component";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { httpTranslateLoaderFactory } from "../app.module";
+import { HttpClient } from "@angular/common/http";
 
 @NgModule({
     declarations: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent, ClipListComponent],
-    imports: [CommonModule, ComponentsModule, ReactiveFormsModule, FormsModule, SharedModule, RouterModule],
+    imports: [
+        CommonModule,
+        ComponentsModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        RouterModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: httpTranslateLoaderFactory,
+                deps: [HttpClient],
+            },
+        }),
+    ],
     exports: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent, ClipListComponent],
 })
 export class FeaturesModule {}

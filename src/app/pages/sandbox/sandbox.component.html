@@ -18,7 +18,7 @@
     <hr />
 
     <input (input)="changeImage($event)" [value]="imgURL" type="text" />
-    <p>{{ "sandbox.p4" | translate : { name } }}</p>
+    <p>{{ "sandbox.name" | translate }}</p>
     <p>{{ 10 + 20 }}</p>
     <app-post *ngFor="let image of images; let i = index" (imgSelected)="logImg($event)" [img]="image">
         <p header>{{ "sandbox.p2" | translate }}</p>

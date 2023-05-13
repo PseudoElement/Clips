@@ -68,6 +68,7 @@ export class ClipService {
                 ...doc.data(),
             });
         });
+
         this.isPendingReq = false;
     }
 }

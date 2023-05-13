@@ -21,10 +21,7 @@ export class SandboxComponent {
     fontSize = 46;
     images = ["https://picsum.photos/id/237/500/500", "https://picsum.photos/id/23/500/500", "https://picsum.photos/id/29/500/500"];
     language = "ru";
-    constructor(public translate: TranslateService) {
-        translate.addLangs(["ru", "en"]);
-        translate.setDefaultLang("ru");
-    }
+    constructor(public translate: TranslateService) {}
 
     onSelectChange(e: Event) {
         this.translate.use((e.target as HTMLSelectElement).value);

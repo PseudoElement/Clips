@@ -12,11 +12,50 @@ import { SharedModule } from "../shared/shared.module";
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
 import { AlertComponent } from "../components/alert/alert.component";
 import { RouterModule } from "@angular/router";
+import { DropdownComponent } from "../components/dropdown/dropdown.component";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { httpTranslateLoaderFactory } from "../app.module";
+import { HttpClient } from "@angular/common/http";
 
 @NgModule({
-    declarations: [TestComponent, PostComponent, NavComponent, ModalComponent, TabsContainerComponent, TabComponent, InputComponent, AlertComponent],
-    imports: [CommonModule, ReactiveFormsModule, FormsModule, SharedModule, NgxMaskDirective, NgxMaskPipe, RouterModule],
-    exports: [TestComponent, PostComponent, NavComponent, ModalComponent, TabsContainerComponent, TabComponent, InputComponent, AlertComponent],
+    declarations: [
+        TestComponent,
+        PostComponent,
+        NavComponent,
+        ModalComponent,
+        TabsContainerComponent,
+        TabComponent,
+        InputComponent,
+        AlertComponent,
+        DropdownComponent,
+    ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        NgxMaskDirective,
+        NgxMaskPipe,
+        RouterModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: httpTranslateLoaderFactory,
+                deps: [HttpClient],
+            },
+        }),
+    ],
+    exports: [
+        TestComponent,
+        PostComponent,
+        NavComponent,
+        ModalComponent,
+        TabsContainerComponent,
+        TabComponent,
+        InputComponent,
+        AlertComponent,
+        DropdownComponent,
+    ],
     providers: [provideNgxMask()],
 })
 export class ComponentsModule {}

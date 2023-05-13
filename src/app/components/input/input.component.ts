@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { FormControl } from "@angular/forms";
 import { ErrorDictionaryKey } from "src/app/shared/constants";
 import { InputTypes } from "./model";
@@ -8,7 +8,7 @@ import { InputTypes } from "./model";
     templateUrl: "./input.component.html",
     styleUrls: ["./input.component.scss"],
 })
-export class InputComponent {
+export class InputComponent implements OnChanges {
     @Input() label: string = "";
     @Input() placeholder?: string = "";
     @Input() control: FormControl = new FormControl();
@@ -16,6 +16,8 @@ export class InputComponent {
     @Input() format = "";
 
     constructor() {}
+
+    ngOnChanges(changes: SimpleChanges): void {}
 
     isError(): ErrorDictionaryKey {
         if (this.control?.dirty && this.control.touched && this.control?.invalid) {
