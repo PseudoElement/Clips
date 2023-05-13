@@ -1,10 +1,36 @@
+* {
+    background-color: white;
+    color: red !important;
+}
 input {
-     margin: 20px 0;
+    margin: 20px 0;
 }
 hr {
-     margin: 20px 0;
+    margin: 20px 0;
 }
 .blue {
-     background-color: blue;
-     color: white;
+    background-color: blue;
+    color: white;
+}
+select {
+    align-self: center;
+    border: 2px solid black;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+}
+.changeColorBtn {
+    align-self: flex-start;
+    font-size: 40px;
+    background-color: goldenrod;
+    border-radius: 20px;
+    padding: 10px;
+    &:hover {
+        background-color: greenyellow;
+    }
+}
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }

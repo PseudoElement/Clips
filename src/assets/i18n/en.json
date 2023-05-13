@@ -1,0 +1,13 @@
+{
+    "sandbox": {
+        "btnText": "Change",
+        "p1": "Button is blue.",
+        "div1": {
+            "blue": "Blue",
+            "notBlue": "Not blue"
+        },
+        "p2": "Some caption 11",
+        "p3": "Some caption 22",
+        "p4": "{{name}}"
+    }
+}

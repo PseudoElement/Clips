@@ -12,6 +12,13 @@ import { environment } from "src/environments/environment";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from "@angular/fire/compat/storage";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+
+export function httpTranslateLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http);
+}
 @NgModule({
     declarations: [AppComponent],
     imports: [
@@ -25,6 +32,14 @@ import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
         AngularFireAuthModule,
         AngularFirestoreModule,
         AngularFireStorageModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: httpTranslateLoaderFactory,
+                deps: [HttpClient],
+            },
+        }),
     ],
     providers: [],
     bootstrap: [AppComponent],

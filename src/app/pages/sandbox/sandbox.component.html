@@ -1,23 +1,31 @@
-<ng-template #dynamicComponent let-content>
-     <div [innerHTML]="content"></div>
-</ng-template>
+<div class="wrapper">
+    <ng-template #dynamicComponent let-content>
+        <div [innerHTML]="content"></div>
+    </ng-template>
 
-<button (click)="blueClass = !blueClass">Change</button>
+    <select (change)="onSelectChange($event)">
+        <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+    </select>
 
-<p *ngIf="blueClass">Button is blue.</p>
+    <button class="changeColorBtn" (click)="blueClass = !blueClass">{{ "sandbox.btnText" | translate }}</button>
 
-<div [ngClass]="{ blue: blueClass }" [ngStyle]="{ 'font-size.px': fontSize }">{{ blueClass ? "Blue" : "Not blue" }}</div>
+    <p *ngIf="blueClass">{{ "sandbox.p1" | translate }}</p>
 
-<hr />
+    <div [ngClass]="{ blue: blueClass }" [ngStyle]="{ 'font-size.px': fontSize }">
+        {{ blueClass ? ("sandbox.div1.blue" | translate) : ("sandbox.div1.notBlue" | translate) }}
+    </div>
 
-<input (input)="changeImage($event)" [value]="imgURL" type="text" />
-<p>{{ name }}</p>
-<p>{{ 10 + 20 }}</p>
-<app-post *ngFor="let image of images; let i = index" (imgSelected)="logImg($event)" [img]="image">
-     <p header>Some caption 11</p>
-     <p footer>Some caption 22</p>
-</app-post>
-<p>{{ currentDate | date : "shortTime" }}</p>
-<p>{{ cost | currency : "HUF" }}</p>
-<p>{{ temperature | number : "1.10" }}</p>
-<p>{{ pizza | json }}</p>
+    <hr />
+
+    <input (input)="changeImage($event)" [value]="imgURL" type="text" />
+    <p>{{ "sandbox.p4" | translate : { name } }}</p>
+    <p>{{ 10 + 20 }}</p>
+    <app-post *ngFor="let image of images; let i = index" (imgSelected)="logImg($event)" [img]="image">
+        <p header>{{ "sandbox.p2" | translate }}</p>
+        <p footer>{{ "sandbox.p3" | translate }}</p>
+    </app-post>
+    <p>{{ currentDate | date : "shortTime" }}</p>
+    <p>{{ cost | currency : "HUF" }}</p>
+    <p>{{ temperature | number : "1.10" }}</p>
+    <p>{{ pizza | json }}</p>
+</div>

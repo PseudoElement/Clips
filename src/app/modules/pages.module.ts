@@ -12,10 +12,27 @@ import { ClipComponent } from "../pages/clip/clip.component";
 import { NotFoundComponent } from "../pages/not-found/not-found.component";
 import { SharedModule } from "../shared/shared.module";
 import { ReactiveFormsModule } from "@angular/forms";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { httpTranslateLoaderFactory } from "../app.module";
+import { HttpClient } from "@angular/common/http";
 
 @NgModule({
     declarations: [SandboxComponent, HomeComponent, AboutComponent, ManageComponent, UploadComponent, ClipComponent, NotFoundComponent],
-    imports: [CommonModule, ComponentsModule, FeaturesModule, RouterModule, SharedModule, ReactiveFormsModule],
+    imports: [
+        CommonModule,
+        ComponentsModule,
+        FeaturesModule,
+        RouterModule,
+        SharedModule,
+        ReactiveFormsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: httpTranslateLoaderFactory,
+                deps: [HttpClient],
+            },
+        }),
+    ],
     exports: [HomeComponent, AboutComponent, ManageComponent, UploadComponent, ClipComponent, NotFoundComponent],
 })
 export class PagesModule {}
