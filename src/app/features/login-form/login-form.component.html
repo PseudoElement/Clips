@@ -1,7 +1,7 @@
 <app-alert *ngIf="alert.isVisible" [color]="alert.color">{{ alert.message }}</app-alert>
 <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
     <div class="mb-3">
-        <label class="inline-block mb-2">Email</label>
+        <label class="inline-block mb-2">{{ "loginForm.emailLabel" | translate }}</label>
         <input style="display: none" />
         <input type="password" style="display: none" />
         <input
@@ -10,26 +10,26 @@
             name="email"
             type="email"
             class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-            placeholder="Enter Email"
+            [placeholder]="t.loginForm.emailPlaceholder"
             required
             pattern="^((?!\.)[\w-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
         />
-        <p *ngIf="email.touched && email.dirty && email.invalid" class="text-red-400">Email is invalid</p>
+        <p *ngIf="email.touched && email.dirty && email.invalid" class="text-red-400">{{ "loginForm.emailError" | translate }}</p>
     </div>
     <div class="mb-3">
-        <label class="inline-block mb-2">Password</label>
+        <label class="inline-block mb-2">{{ "loginForm.passwordLabel" | translate }}</label>
         <input
             #password="ngModel"
             type="password"
             class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400"
-            placeholder="Password"
+            [placeholder]="t.loginForm.passwordPlaceholder"
             [(ngModel)]="credentials.password"
             required
             minlength="5"
             pattern="^(?=.*[a-zA-Z])(?=.*\d).+$"
             name="password"
         />
-        <p *ngIf="password.touched && password.dirty && password.invalid" class="text-red-400">Should contain at least 1 digit, 1 letter, be longer 5 chars</p>
+        <p *ngIf="password.touched && password.dirty && password.invalid" class="text-red-400">{{ "loginForm.passwordError" | translate }}</p>
     </div>
     <button
         [disabled]="loginForm.invalid || isLoading"
@@ -37,6 +37,6 @@
         [ngClass]="{ 'disabled:opacity-50 disabled:bg-indigo-400': loginForm.invalid }"
         class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500"
     >
-        Submit
+        {{ "loginForm.submit" | translate }}
     </button>
 </form>

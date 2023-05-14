@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, S
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { AuthModalService } from "src/app/services/auth-modal.service";
 import { ClipService } from "src/app/services/clip.service";
+import { LanguageService } from "src/app/services/language.service";
 import { ModalTypes } from "src/app/shared/enums";
 import { IAlert, IClip } from "src/app/shared/types";
 
@@ -32,7 +33,13 @@ export class EditModalComponent implements OnInit, OnDestroy, OnChanges {
     };
     isLoading = false;
 
-    constructor(private modalService: AuthModalService, private clipService: ClipService) {}
+    constructor(private languageService: LanguageService, private modalService: AuthModalService, private clipService: ClipService) {
+        this.languageService.selectedLanguage$.subscribe((val) => {
+            this.t = this.languageService.getTranslation(val);
+        });
+    }
+
+    t = this.languageService.getTranslation("ru");
 
     ngOnChanges(changes: SimpleChanges): void {
         if (!this.activeClip) {
@@ -56,20 +63,20 @@ export class EditModalComponent implements OnInit, OnDestroy, OnChanges {
         this.isLoading = true;
         this.alert.isVisible = true;
         this.alert.color = "blue";
-        this.alert.message = "Please wait! Updating clip.";
+        this.alert.message = this.t.editModal.alertLoading;
 
         try {
             await this.clipService.updateClip(this.clipID.value, this.title.value);
         } catch (e: any) {
             this.alert.color = "red";
-            this.alert.message = e;
+            this.alert.message = this.t.editModal.alertError;
             this.isLoading = false;
             return;
         }
         this.activeClip.title = this.title.value;
         this.changedClip.emit(this.activeClip as IClip);
         this.alert.color = "green";
-        this.alert.message = "Your clip data was successfully changed!";
+        this.alert.message = this.t.editModal.alertSuccess;
         setTimeout(() => {
             this.modalService.toggleModal(ModalTypes.EDIT_CLIP);
         }, 3000);

@@ -2,8 +2,8 @@ import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { IAlert } from "src/app/shared/types";
 import { AuthModalService } from "src/app/services/auth-modal.service";
-import { ModalTypes } from "src/app/shared/enums";
 import { AuthService } from "src/app/services/auth.service";
+import { LanguageService } from "src/app/services/language.service";
 
 @Component({
     selector: "app-login-form",
@@ -21,7 +21,13 @@ export class LoginFormComponent {
         message: "",
         color: "blue",
     };
-    constructor(private auth: AuthService, private modal: AuthModalService) {}
+    t = this.languageService.getTranslation("ru");
+
+    constructor(public languageService: LanguageService, private auth: AuthService, private modal: AuthModalService) {
+        this.languageService.selectedLanguage$.subscribe((val) => {
+            this.t = this.languageService.getTranslation(val);
+        });
+    }
 
     async onSubmit(ngForm: NgForm) {
         if (ngForm.form.invalid) {

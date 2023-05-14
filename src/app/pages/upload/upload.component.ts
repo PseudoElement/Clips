@@ -4,13 +4,12 @@ import { AngularFireStorage, AngularFireUploadTask } from "@angular/fire/compat/
 import { AngularFireAuth } from "@angular/fire/compat/auth";
 import firebase from "firebase/compat/app";
 import { v4 as uuid } from "uuid";
-import { IAlert, IClip } from "src/app/shared/types";
+import { IAlert } from "src/app/shared/types";
 import { combineLatest, forkJoin, last, switchMap } from "rxjs";
 import { ClipService } from "src/app/services/clip.service";
 import { Router } from "@angular/router";
 import { FfmpegService } from "src/app/services/ffmpeg.service";
 import { LanguageService } from "src/app/services/language.service";
-import { useTranslate } from "src/app/shared/helpers/useTranslate";
 @Component({
     selector: "app-upload",
     templateUrl: "./upload.component.html",
@@ -44,6 +43,8 @@ export class UploadComponent implements OnDestroy {
         title: this.title,
     });
 
+    t = this.languageService.getTranslation("ru");
+
     constructor(
         public ffmpegService: FfmpegService,
         private router: Router,
@@ -54,6 +55,9 @@ export class UploadComponent implements OnDestroy {
     ) {
         auth.user.subscribe((user) => (this.user = user));
         this.ffmpegService.init();
+        this.languageService.selectedLanguage$.subscribe((val) => {
+            this.t = this.languageService.getTranslation(val);
+        });
     }
 
     ngOnDestroy(): void {
@@ -65,7 +69,7 @@ export class UploadComponent implements OnDestroy {
         this.isLoading = true;
         this.alert.color = "blue";
         this.alert.isVisible = true;
-        this.alert.message = this.languageService.translateJSON.alert.loading;
+        this.alert.message = this.t.alert.loading;
 
         const clipFileName = uuid();
         const clipPath = `clips/${clipFileName}.mp4`;
@@ -111,7 +115,7 @@ export class UploadComponent implements OnDestroy {
                     const clipDocRef = await this.clipService.createClip(clip);
                     this.isLoading = false;
                     this.alert.color = "green";
-                    this.alert.message = this.languageService.translateJSON.alert.success;
+                    this.alert.message = this.t.alert.success;
                     this.progress.isVisible = false;
                     setTimeout(() => {
                         this.alert.isVisible = false;
@@ -120,7 +124,7 @@ export class UploadComponent implements OnDestroy {
                 },
                 error: (err) => {
                     this.uploadForm.enable();
-                    this.alert.message = this.languageService.translateJSON.alert.error;
+                    this.alert.message = this.t.alert.error;
                     this.alert.color = "red";
                     this.isLoading = false;
                 },

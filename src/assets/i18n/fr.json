@@ -24,7 +24,6 @@
     "upload": {
         "text1": "Télécharger la vidéo",
         "text2": "Déposez votre fichier ici (mp4 seulement!)",
-        "text3": "",
         "text4": "Sélectionner une saisie d’écran",
         "inputTitle": "Titre",
         "inputPlaceholder": "Entrez le titre",
@@ -33,11 +32,32 @@
     "manage": {
         "uploadBtn": "Télécharger des vidéos",
         "option1": "Téléchargements récents",
-        "option2": "Téléchargements anciens"
+        "option2": "Téléchargements anciens",
+        "text1": "Copier le lien",
+        "text2": "construire",
+        "text3": "supprimer"
     },
     "alert": {
         "loading": "Veuillez patienter ! Votre clip est en cours de téléchargement.",
         "success": "Votre fichier a été téléchargé avec succès!",
         "error": "Votre clip n’a pas été téléchargé! Une erreur s’est produite."
+    },
+    "loginForm": {
+        "emailLabel": "Email",
+        "emailPlaceholder": "Entrez votre Email",
+        "emailError": "Email est invalide",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Entrez votre Password",
+        "passwordError": "Doit contenir au moins 1 chiffre, 1 lettre, être plus longue 5 caractères",
+        "submit": "Soumettre"
+    },
+    "editModal": {
+        "text1": "Éditer video",
+        "titleLabel": "Titre",
+        "titlePlaceholder": "Enter new title",
+        "publish": "Publier",
+        "alertLoading": "Veuillez patienter! Mise à jour du clip.",
+        "alertSuccess": "Vos données de clip ont été modifiées avec succès!",
+        "alertError": "Erreur! Vos données de clip n’ont pas été modifiées."
     }
 }

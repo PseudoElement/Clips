@@ -21,16 +21,16 @@
             <div class="p-6 text-2xl">
                 <!-- Link -->
                 <a href="#" class="font-bold mb-2"> {{ clip.title }} </a>
-                <a href="#" class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded"> Copy Link </a>
+                <a href="#" class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded"> {{ "manage.text1" | translate }} </a>
             </div>
 
             <!-- Actions -->
             <div class="flex text-center text-2xl bg-gray-800 p-2 mt-auto">
                 <a (click)="openModal($event, clip)" class="flex-1 p-2 border-right border-r-2 border-gray-700 transition hover:text-indigo-400">
-                    <span class="material-icons text-base">build</span>
+                    <span class="material-icons text-base">{{ "manage.text2" | translate }}</span>
                 </a>
                 <a (click)="deleteClip($event, clip)" class="flex-1 p-2 rounded-br-2xl transition hover:text-indigo-400">
-                    <span class="material-icons text-base">delete</span>
+                    <span class="material-icons text-base">{{ "manage.text3" | translate }}</span>
                 </a>
             </div>
         </div>
