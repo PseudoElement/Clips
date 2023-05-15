@@ -2,22 +2,22 @@ import { Injectable } from "@angular/core";
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference, QuerySnapshot } from "@angular/fire/compat/firestore";
 import { IClip } from "../shared/types";
 import { AngularFireAuth } from "@angular/fire/compat/auth";
-import { BehaviorSubject, combineLatest, map, of, switchMap } from "rxjs";
+import { BehaviorSubject, Observable, combineLatest, map, of, switchMap } from "rxjs";
 import { AngularFireStorage } from "@angular/fire/compat/storage";
+import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from "@angular/router";
 
 @Injectable({
     providedIn: "root",
 })
-export class ClipService {
+export class ClipService implements Resolve<IClip | null> {
     public clipsCollection: AngularFirestoreCollection<IClip>;
     pageClips: IClip[] = [];
     isPendingReq = false;
 
-    constructor(private db: AngularFirestore, private auth: AngularFireAuth, private storage: AngularFireStorage) {
+    constructor(private router: Router, private db: AngularFirestore, private auth: AngularFireAuth, private storage: AngularFireStorage) {
         this.clipsCollection = this.db.collection("clips");
     }
     createClip(data: IClip): Promise<DocumentReference<IClip>> {
-        console.log("DATA", data);
         return this.clipsCollection.add(data);
     }
     getUserClips(sort$: BehaviorSubject<string>) {
@@ -70,5 +70,20 @@ export class ClipService {
         });
 
         this.isPendingReq = false;
+    }
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): IClip | Observable<IClip | null> | Promise<IClip | null> | null {
+        return this.clipsCollection
+            .doc(route.params.id)
+            .get()
+            .pipe(
+                map((snapshot) => {
+                    const data = snapshot.data();
+                    if (!data) {
+                        this.router.navigate(["/"]);
+                        return null;
+                    }
+                    return data;
+                })
+            );
     }
 }

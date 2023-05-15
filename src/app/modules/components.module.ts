@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { TestComponent } from "../components/test/test.component";
 import { PostComponent } from "../components/post/post.component";
-import { NavComponent } from "../components/nav/nav.component";
 import { ModalComponent } from "../components/modal/modal.component";
 import { TabsContainerComponent } from "../components/tabs-container/tabs-container.component";
 import { TabComponent } from "../components/tab/tab.component";
@@ -18,17 +17,7 @@ import { httpTranslateLoaderFactory } from "../app.module";
 import { HttpClient } from "@angular/common/http";
 
 @NgModule({
-    declarations: [
-        TestComponent,
-        PostComponent,
-        NavComponent,
-        ModalComponent,
-        TabsContainerComponent,
-        TabComponent,
-        InputComponent,
-        AlertComponent,
-        DropdownComponent,
-    ],
+    declarations: [TestComponent, PostComponent, ModalComponent, TabsContainerComponent, TabComponent, InputComponent, AlertComponent, DropdownComponent],
     imports: [
         CommonModule,
         ReactiveFormsModule,
@@ -45,17 +34,7 @@ import { HttpClient } from "@angular/common/http";
             },
         }),
     ],
-    exports: [
-        TestComponent,
-        PostComponent,
-        NavComponent,
-        ModalComponent,
-        TabsContainerComponent,
-        TabComponent,
-        InputComponent,
-        AlertComponent,
-        DropdownComponent,
-    ],
+    exports: [TestComponent, PostComponent, ModalComponent, TabsContainerComponent, TabComponent, InputComponent, AlertComponent, DropdownComponent],
     providers: [provideNgxMask()],
 })
 export class ComponentsModule {}

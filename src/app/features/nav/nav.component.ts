@@ -25,7 +25,7 @@ export class NavComponent {
         await this.auth.signOut();
     }
 
-    onSelect(lang: Languages) {
+    public onSelect(lang: Languages) {
         this.languageService.changeLanguage(lang);
     }
 }

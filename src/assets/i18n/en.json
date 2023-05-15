@@ -64,6 +64,7 @@
         "title": "Your account"
     },
     "clip": {
-        "moreClips": "More clips"
+        "moreClips": "More clips",
+        "text1": "Uploaded by {{name}} on"
     }
 }

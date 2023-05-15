@@ -11,11 +11,13 @@
 <div class="container mx-auto my-8">
     <!-- Video List -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <div *ngFor="let clip of clips" class="mt-6 rounded-tl-2xl rounded-br-2xl shadow-xl bg-secondary flex flex-col justify-start">
+        <div
+            (click)="onClipClick(clip)"
+            *ngFor="let clip of clips"
+            class="mt-6 rounded-tl-2xl rounded-br-2xl shadow-xl bg-secondary flex flex-col justify-start cursor-pointer"
+        >
             <!-- Image -->
-            <a href="#">
-                <img class="card-img-top rounded-tl-2xl w-full" src="assets/img/1.jpg" />
-            </a>
+            <img crossorigin="anonymous" class="card-img-top rounded-tl-2xl w-full" [src]="clip.screenshotURL" />
 
             <!-- Body -->
             <div class="p-6 text-2xl">

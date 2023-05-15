@@ -8,6 +8,7 @@ import { UploadComponent } from "./pages/upload/upload.component";
 import { ClipComponent } from "./pages/clip/clip.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from "@angular/fire/compat/auth-guard";
+import { ClipService } from "./services/clip.service";
 
 const redirectToHome = () => redirectUnauthorizedTo("/");
 
@@ -34,6 +35,9 @@ const routes: Routes = [
     {
         path: "clip/:id",
         component: ClipComponent,
+        resolve: {
+            clip: ClipService,
+        },
     },
     { path: "about", component: AboutComponent },
     { path: "hidden", component: SandboxComponent },

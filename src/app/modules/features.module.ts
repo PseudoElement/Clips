@@ -13,9 +13,10 @@ import { ClipListComponent } from "../features/clip-list/clip-list.component";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { httpTranslateLoaderFactory } from "../app.module";
 import { HttpClient } from "@angular/common/http";
+import { NavComponent } from "../features/nav/nav.component";
 
 @NgModule({
-    declarations: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent, ClipListComponent],
+    declarations: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent, ClipListComponent, NavComponent],
     imports: [
         CommonModule,
         ComponentsModule,
@@ -31,6 +32,6 @@ import { HttpClient } from "@angular/common/http";
             },
         }),
     ],
-    exports: [AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent, ClipListComponent],
+    exports: [NavComponent, AuthModalComponent, LoginFormComponent, RegisterFormComponent, VideosComponent, EditModalComponent, ClipListComponent],
 })
 export class FeaturesModule {}

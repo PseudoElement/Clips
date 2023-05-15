@@ -64,6 +64,7 @@
         "title": "Votre compte"
     },
     "clip": {
-        "moreClips": "Plus des vidéos"
+        "moreClips": "Plus des vidéos",
+        "text1": "Téléchargé par {{name}} sur"
     }
 }

@@ -32,11 +32,17 @@ export class ManageComponent implements OnInit {
                     ...doc.data(),
                 });
             });
+            console.log(this.clips);
         });
+    }
+
+    onClipClick(clip: IClip) {
+        this.router.navigate(["/", "clip", clip.id]);
     }
 
     deleteClip(e: Event, clip: IClip) {
         e.preventDefault();
+        e.stopPropagation();
         console.log(clip);
         this.clipService.deleteClip(clip);
         this.clips = this.clips.filter((clipInner) => clipInner.id !== clip.id);
@@ -57,6 +63,7 @@ export class ManageComponent implements OnInit {
     }
     openModal(e: Event, clip: IClip) {
         e.preventDefault();
+        e.stopPropagation();
         this.activeClip = clip;
         this.modalService.toggleModal(ModalTypes.EDIT_CLIP);
     }

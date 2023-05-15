@@ -1,15 +1,13 @@
 <section class="container mx-auto my-8 bg-secondary p-6">
     <div class="rounded relative flex flex-col">
-        <h1 class="font-bold mb-2 text-3xl">Video {{ id }}</h1>
+        <h1 class="font-bold mb-2 text-3xl">{{ clip?.title }}</h1>
         <div class="text-gray-400 mb-6">
-            Uploaded By Pavel on
-            <span>March 25, 2023</span>
+            {{ "clip.text1" | translate : { name: clip?.displayName } }}
+            <span>{{ clip?.timestamp | fbTimestamp }}</span>
         </div>
 
         <div class="relative videoWrapper">
-            <video #videoPlayer controls class="vjs-theme-forest mx-auto video-js video">
-                <source src="assets/video/hero.webm" type="video/webm" />
-            </video>
+            <video crossorigin="anonymous" #videoPlayer controls class="vjs-theme-forest mx-auto video-js video"></video>
         </div>
     </div>
 </section>
