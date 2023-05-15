@@ -5,7 +5,7 @@ import { ComponentsModule } from "./components.module";
 import { LoginFormComponent } from "../features/login-form/login-form.component";
 import { RegisterFormComponent } from "../features/register-form/register-form.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from "./shared.module";
 import { RouterModule } from "@angular/router";
 import { VideosComponent } from "../features/videos/videos.component";
 import { EditModalComponent } from "../features/edit-modal/edit-modal.component";

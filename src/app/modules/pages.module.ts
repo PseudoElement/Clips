@@ -10,7 +10,7 @@ import { UploadComponent } from "../pages/upload/upload.component";
 import { RouterModule } from "@angular/router";
 import { ClipComponent } from "../pages/clip/clip.component";
 import { NotFoundComponent } from "../pages/not-found/not-found.component";
-import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from "./shared.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { httpTranslateLoaderFactory } from "../app.module";

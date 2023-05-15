@@ -59,5 +59,11 @@
         "alertLoading": "Please wait! Updating clip.",
         "alertSuccess": "Your clip data was successfully changed!",
         "alertError": "Error! Your clip data weren't changed."
+    },
+    "authModal": {
+        "title": "Your account"
+    },
+    "clip": {
+        "moreClips": "More clips"
     }
 }

@@ -59,5 +59,11 @@
         "alertLoading": "Veuillez patienter! Mise à jour du clip.",
         "alertSuccess": "Vos données de clip ont été modifiées avec succès!",
         "alertError": "Erreur! Vos données de clip n’ont pas été modifiées."
+    },
+    "authModal": {
+        "title": "Votre compte"
+    },
+    "clip": {
+        "moreClips": "Plus des vidéos"
     }
 }

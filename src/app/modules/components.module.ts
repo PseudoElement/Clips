@@ -8,7 +8,7 @@ import { TabsContainerComponent } from "../components/tabs-container/tabs-contai
 import { TabComponent } from "../components/tab/tab.component";
 import { InputComponent } from "../components/input/input.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { SharedModule } from "../shared/shared.module";
+import { SharedModule } from "./shared.module";
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
 import { AlertComponent } from "../components/alert/alert.component";
 import { RouterModule } from "@angular/router";
