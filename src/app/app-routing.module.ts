@@ -42,6 +42,7 @@ const routes: Routes = [
     { path: "about", component: AboutComponent },
     { path: "hidden", component: SandboxComponent },
     { path: "not-found", component: NotFoundComponent },
+    { path: "", loadChildren: () => import("./modules/pages.module").then((m) => m.PagesModule) },
     {
         path: "**",
         redirectTo: "not-found",

@@ -26,7 +26,5 @@ export class InputComponent implements OnChanges {
             return "" as ErrorDictionaryKey;
         }
     }
-    onClick() {
-        // console.log(this.control);
-    }
+    onClick() {}
 }

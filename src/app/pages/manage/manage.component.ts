@@ -1,23 +1,35 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Router, ActivatedRoute, Params } from "@angular/router";
-import { BehaviorSubject, Observable, map } from "rxjs";
+import { BehaviorSubject, Observable, Subject, Subscription, map, takeUntil } from "rxjs";
 import { ClipService } from "src/app/services/clip.service";
-import { IClip } from "src/app/shared/types";
+import { IClip, Languages } from "src/app/shared/types";
 import { AuthModalService } from "src/app/services/auth-modal.service";
 import { ModalTypes } from "src/app/shared/enums";
+import { LanguageService } from "src/app/services/language.service";
 
 @Component({
     selector: "app-manage",
     templateUrl: "./manage.component.html",
     styleUrls: ["./manage.component.scss"],
 })
-export class ManageComponent implements OnInit {
+export class ManageComponent implements OnInit, OnDestroy {
     videoOrder = "1";
     clips: IClip[] = [];
     activeClip: IClip | null = null;
     sort$: BehaviorSubject<string> = new BehaviorSubject(this.videoOrder);
 
-    constructor(private modalService: AuthModalService, private router: Router, private route: ActivatedRoute, private clipService: ClipService) {}
+    componentDestroyed$: Subject<boolean> = new Subject();
+
+    constructor(
+        private languageService: LanguageService,
+        private modalService: AuthModalService,
+        private router: Router,
+        private route: ActivatedRoute,
+        private clipService: ClipService
+    ) {}
+
+    t = this.languageService.getTranslation("ru");
+
     ngOnInit(): void {
         this.route.queryParamMap.pipe(map(({ params }: Params) => params)).subscribe((params: Params) => {
             const value = params.sort;
@@ -32,12 +44,21 @@ export class ManageComponent implements OnInit {
                     ...doc.data(),
                 });
             });
-            console.log(this.clips);
+        });
+        this.languageService.selectedLanguage$.pipe(takeUntil(this.componentDestroyed$)).subscribe((val) => {
+            this.t = this.languageService.getTranslation(val);
         });
     }
+    ngOnDestroy(): void {
+        this.componentDestroyed$.next(true);
+    }
 
-    onClipClick(clip: IClip) {
-        this.router.navigate(["/", "clip", clip.id]);
+    async onCopyClick(e: MouseEvent, id: string | undefined) {
+        e.preventDefault();
+        if (!id) return;
+        const url = `${location.origin}/clip/${id}`;
+        await navigator.clipboard.writeText(url);
+        alert(this.t.manage.alert);
     }
 
     deleteClip(e: Event, clip: IClip) {

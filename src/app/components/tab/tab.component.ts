@@ -8,7 +8,5 @@ import { Component, Input } from "@angular/core";
 export class TabComponent {
     @Input() title: string = "";
     @Input() isActive = false;
-    method() {
-        console.log("test");
-    }
+    method() {}
 }

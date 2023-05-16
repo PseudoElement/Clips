@@ -4,7 +4,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { ComponentsModule } from "./modules/components.module";
-import { PagesModule } from "./modules/pages.module";
 import { FeaturesModule } from "./modules/features.module";
 import { AngularFireModule } from "@angular/fire/compat";
 import { environment } from "src/environments/environment";
@@ -24,7 +23,6 @@ export function httpTranslateLoaderFactory(http: HttpClient) {
         BrowserModule,
         AppRoutingModule,
         ComponentsModule,
-        PagesModule,
         FeaturesModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,

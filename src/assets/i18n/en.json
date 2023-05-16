@@ -35,7 +35,8 @@
         "option2": "Oldest uploads",
         "text1": "Copy Link",
         "text2": "build",
-        "text3": "delete"
+        "text3": "delete",
+        "alert": "Link is copied!"
     },
     "alert": {
         "loading": "Please wait! Your clip is being uploaded.",
@@ -49,7 +50,10 @@
         "passwordLabel": "Password",
         "passwordPlaceholder": "Enter Password",
         "passwordError": "Should contain at least 1 digit, 1 letter, be longer 5 chars",
-        "submit": "Submit"
+        "submit": "Submit",
+        "alertLoading": "Please wait! Your account is logging in.",
+        "alertError": "Login error!",
+        "alertSuccess": "You've successfully logged in!"
     },
     "editModal": {
         "text1": "Edit video",

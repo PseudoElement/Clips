@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Subscription } from "rxjs";
 import { AuthModalService } from "src/app/services/auth-modal.service";
 import { ClipService } from "src/app/services/clip.service";
 import { LanguageService } from "src/app/services/language.service";
@@ -32,9 +33,10 @@ export class EditModalComponent implements OnInit, OnDestroy, OnChanges {
         message: "",
     };
     isLoading = false;
+    languageSub?: Subscription;
 
     constructor(private languageService: LanguageService, private modalService: AuthModalService, private clipService: ClipService) {
-        this.languageService.selectedLanguage$.subscribe((val) => {
+        this.languageSub = this.languageService.selectedLanguage$.subscribe((val) => {
             this.t = this.languageService.getTranslation(val);
         });
     }
@@ -56,6 +58,7 @@ export class EditModalComponent implements OnInit, OnDestroy, OnChanges {
     }
     ngOnDestroy(): void {
         this.modalService.unregister(ModalTypes.EDIT_CLIP);
+        this.languageSub?.unsubscribe();
     }
 
     async onSubmit() {

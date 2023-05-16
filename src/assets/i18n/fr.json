@@ -35,7 +35,8 @@
         "option2": "Téléchargements anciens",
         "text1": "Copier le lien",
         "text2": "construire",
-        "text3": "supprimer"
+        "text3": "supprimer",
+        "alert": "Le lien est copié!"
     },
     "alert": {
         "loading": "Veuillez patienter ! Votre clip est en cours de téléchargement.",
@@ -49,7 +50,10 @@
         "passwordLabel": "Password",
         "passwordPlaceholder": "Entrez votre Password",
         "passwordError": "Doit contenir au moins 1 chiffre, 1 lettre, être plus longue 5 caractères",
-        "submit": "Soumettre"
+        "submit": "Soumettre",
+        "alertLoading": "Veuillez patienter! Mise à jour du clip.",
+        "alertError": "Erreur de connexion !",
+        "alertSuccess": "Vous êtes connecté avec succès!"
     },
     "editModal": {
         "text1": "Éditer video",
