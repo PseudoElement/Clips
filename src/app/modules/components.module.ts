@@ -15,9 +15,10 @@ import { DropdownComponent } from "../components/dropdown/dropdown.component";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { httpTranslateLoaderFactory } from "../app.module";
 import { HttpClient } from "@angular/common/http";
+import { SpecComponent } from '../components/spec/spec.component';
 
 @NgModule({
-    declarations: [TestComponent, PostComponent, ModalComponent, TabsContainerComponent, TabComponent, InputComponent, AlertComponent, DropdownComponent],
+    declarations: [TestComponent, PostComponent, ModalComponent, TabsContainerComponent, TabComponent, InputComponent, AlertComponent, DropdownComponent, SpecComponent],
     imports: [
         CommonModule,
         ReactiveFormsModule,
