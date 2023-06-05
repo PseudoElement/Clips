@@ -27,4 +27,7 @@ export class LanguageService {
         else if (lang === "ru") return ru;
         else return fr;
     }
+    public translation$(): Observable<typeof en> {
+        return this.selectedLanguage$.pipe(map((lang) => (lang === "en" ? en : lang === "ru" ? ru : fr)));
+    }
 }

@@ -44,6 +44,7 @@
         "error": "Your clip wasn't uploaded! Some error occured."
     },
     "loginForm": {
+        "title": "Login",
         "emailLabel": "Email",
         "emailPlaceholder": "Enter Email",
         "emailError": "Email is invalid",
@@ -54,6 +55,27 @@
         "alertLoading": "Please wait! Your account is logging in.",
         "alertError": "Login error!",
         "alertSuccess": "You've successfully logged in!"
+    },
+    "registerForm": {
+        "title": "Register",
+        "nameLabel": "Name",
+        "namePlaceholder": "Enter Name",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Enter Email",
+        "emailError": "Email is invalid",
+        "ageLabel": "Age",
+        "agePlaceholder": "Enter Age",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Enter Password",
+        "passwordError": "Should contain at least 1 digit, 1 letter, be longer 5 chars",
+        "confirmPasswordLabel": "Confirm Password",
+        "confirmPasswordPlaceholder": "Confirm Password",
+        "phoneLabel": "Phone",
+        "phonePlaceholder": "Enter Phone",
+        "submit": "Submit",
+        "alertLoading": "Please wait! Your account is creating.",
+        "alertError": "Registration error!",
+        "alertSuccess": "You've successfully registered!"
     },
     "editModal": {
         "text1": "Edit video",

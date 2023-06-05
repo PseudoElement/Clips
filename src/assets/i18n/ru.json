@@ -44,6 +44,7 @@
         "error": "Ваш клип не загружен! Произошла ошибка."
     },
     "loginForm": {
+        "title": "Логин",
         "emailLabel": "Email",
         "emailPlaceholder": "Введите Email",
         "emailError": "Email не верный",
@@ -54,6 +55,27 @@
         "alertLoading": "Пожалуйста подождите! Идет авторизация.",
         "alertError": "Ошибка авторизации!",
         "alertSuccess": "Вы успешно авторизовались!"
+    },
+    "registerForm": {
+        "title": "Регистрация",
+        "nameLabel": "Имя",
+        "namePlaceholder": "Введите Имя",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Введите Email",
+        "emailError": "Email неверный",
+        "ageLabel": "Возраст",
+        "agePlaceholder": "Введите возраст",
+        "passwordLabel": "Пароль",
+        "passwordPlaceholder": "Введите Пароль",
+        "passwordError": "Пароль должен содержать 1 букву, 1 цифру и содержать минимум 5 символов",
+        "confirmPasswordLabel": "Подтверждение Пароля",
+        "confirmPasswordPlaceholder": "Подтвердите Пароль",
+        "phoneLabel": "Телефон",
+        "phonePlaceholder": "Введите номер Телефона",
+        "submit": "Отправить",
+        "alertLoading": "Пожалуйста подождите! Идет регистрация.",
+        "alertError": "Ошибка регистрации!",
+        "alertSuccess": "Вы успешно зарегистрировались!"
     },
     "editModal": {
         "text1": "Редактировать видео",

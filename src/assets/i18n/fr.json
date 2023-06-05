@@ -16,7 +16,7 @@
     },
     "nav": {
         "about": "Informations sur nous",
-        "loginRegister": "Connexion / Inscription",
+        "loginRegister": "Login / Inscription",
         "manage": "Éditer",
         "upload": "Télécharger",
         "logout": "Sortir"
@@ -44,6 +44,7 @@
         "error": "Votre clip n’a pas été téléchargé! Une erreur s’est produite."
     },
     "loginForm": {
+        "title": "Login",
         "emailLabel": "Email",
         "emailPlaceholder": "Entrez votre Email",
         "emailError": "Email est invalide",
@@ -54,6 +55,27 @@
         "alertLoading": "Veuillez patienter! Mise à jour du clip.",
         "alertError": "Erreur de connexion !",
         "alertSuccess": "Vous êtes connecté avec succès!"
+    },
+    "registerForm": {
+        "title": "Inscription",
+        "nameLabel": "Nom",
+        "namePlaceholder": "Entrez votre Nom",
+        "emailLabel": "Email",
+        "emailPlaceholder": "Entrez votre Email",
+        "emailError": "Email est invalide",
+        "ageLabel": "Âge ",
+        "agePlaceholder": "Entrez Âge ",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "Entrez votre Password",
+        "passwordError": "Doit contenir au moins 1 chiffre, 1 lettre, être plus longue 5 caractères",
+        "confirmPasswordLabel": "Confirmation du mot de passe",
+        "confirmPasswordPlaceholder": "Confirmez votre mot de passe",
+        "phoneLabel": "Téléphone",
+        "phonePlaceholder": "Entrez votre Téléphone",
+        "submit": "Soumettre",
+        "alertLoading": "Veuillez patienter! Votre compte est en cours de création.",
+        "alertError": "Erreur d’inscription!",
+        "alertSuccess": "Vous vous êtes inscrit avec succès!"
     },
     "editModal": {
         "text1": "Éditer video",

@@ -1,32 +1,42 @@
 <app-alert *ngIf="alert.isVisible" [color]="alert.color">{{ alert.message }}</app-alert>
 
-<form [formGroup]="registerForm" (input)="onChange()" (ngSubmit)="onSubmit()">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
-        <app-input [control]="registerForm.controls.name" [label]="'Name'" [placeholder]="'Enter Name'"></app-input>
+        <app-input [control]="registerForm.controls.name" [label]="t.registerForm.nameLabel" [placeholder]="t.registerForm.namePlaceholder"></app-input>
     </div>
     <div class="mb-3">
-        <app-input [control]="registerForm.controls.email" [label]="'Email'" [placeholder]="'Enter Email'"></app-input>
+        <app-input [control]="registerForm.controls.email" [label]="t.registerForm.emailLabel" [placeholder]="t.registerForm.emailPlaceholder"></app-input>
     </div>
     <div class="mb-3">
-        <app-input [control]="registerForm.controls.age" [label]="'Age'" [type]="'number'" [placeholder]="'Enter Age'"></app-input>
+        <app-input
+            [control]="registerForm.controls.age"
+            [label]="t.registerForm.ageLabel"
+            [type]="'number'"
+            [placeholder]="t.registerForm.agePlaceholder"
+        ></app-input>
     </div>
     <div class="mb-3">
-        <app-input [control]="registerForm.controls.password" [label]="'Password'" [type]="'password'" [placeholder]="'Enter Password'"></app-input>
+        <app-input
+            [control]="registerForm.controls.password"
+            [label]="t.registerForm.passwordLabel"
+            [type]="'password'"
+            [placeholder]="t.registerForm.passwordPlaceholder"
+        ></app-input>
     </div>
     <div class="mb-3">
         <app-input
             [control]="registerForm.controls.confirmPassword"
-            [label]="'Confirm Password'"
+            [label]="t.registerForm.confirmPasswordLabel"
             [type]="'password'"
-            [placeholder]="'Confirm Password'"
+            [placeholder]="t.registerForm.confirmPasswordPlaceholder"
         ></app-input>
     </div>
     <div class="mb-3">
         <app-input
             [control]="registerForm.controls.phone"
-            [label]="'Phone'"
+            [label]="t.registerForm.phoneLabel"
             [type]="'text'"
-            [placeholder]="'Enter Phone'"
+            [placeholder]="t.registerForm.phonePlaceholder"
             [format]="'+000(00)00-00-000'"
         ></app-input>
     </div>
@@ -35,6 +45,6 @@
         type="submit"
         class="block w-full bg-indigo-400 text-white py-1.5 px-3 rounded transition hover:bg-indigo-500 disabled:opacity-50 disabled:bg-indigo-400"
     >
-        Submit
+        {{ "registerForm.submit" | translate }}
     </button>
 </form>
