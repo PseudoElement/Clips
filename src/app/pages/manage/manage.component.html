@@ -11,13 +11,13 @@
 <div class="container mx-auto my-8">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div *ngFor="let clip of clips" class="mt-6 rounded-tl-2xl rounded-br-2xl shadow-xl bg-secondary flex flex-col justify-start cursor-pointer">
-            <img crossorigin="anonymous" class="card-img-top rounded-tl-2xl w-full" [src]="clip.screenshotURL" />
-
+            <a [routerLink]="['/', 'clip', clip.id]" class="font-bold mb-2">
+                <img crossorigin="anonymous" class="card-img-top rounded-tl-2xl w-full" [src]="clip.screenshotURL" />
+            </a>
             <div class="p-6 text-2xl">
                 <a [routerLink]="['/', 'clip', clip.id]" class="font-bold mb-2"> {{ clip.title }} </a>
                 <a (click)="onCopyClick($event, clip.id)" class="bg-gray-400 text-white px-2 py-1 ml-2 text-sm rounded"> {{ "manage.text1" | translate }} </a>
             </div>
-
             <div class="flex text-center text-2xl bg-gray-800 p-2 mt-auto">
                 <a (click)="openModal($event, clip)" class="flex-1 p-2 border-right border-r-2 border-gray-700 transition hover:text-indigo-400">
                     <span class="material-icons text-base">{{ "manage.text2" | translate }}</span>

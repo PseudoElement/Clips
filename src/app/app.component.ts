@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { AuthService } from "./services/auth.service";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { Observable, Subject, Subscription, filter, map, of, switchMap, tap } from "rxjs";
@@ -9,10 +9,14 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     isNotFoundComponent = false;
     obs$?: Subscription;
     constructor(public auth: AuthService, public route: ActivatedRoute, private router: Router) {}
+
+    ngOnInit(): void {
+        this.auth.signIn("user@mail.ru", "old228");
+    }
 
     ngAfterContentInit() {
         this.obs$ = this.router.events
